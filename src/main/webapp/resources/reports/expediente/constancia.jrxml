@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="constancia" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b87e0bfc-8f70-4b0d-a6f8-4369ff1a39de">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="746"/>
+	<parameter name="PACIENTE" class="java.lang.String"/>
+	<parameter name="EXAMENES" class="java.lang.String"/>
+	<parameter name="HORAENTRADA" class="java.lang.String"/>
+	<parameter name="HORASALIDA" class="java.lang.String"/>
+	<parameter name="ATENTAMENTE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1 from dual]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="76" splitType="Immediate">
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="75" forecolor="#545584" uuid="5fe2cd30-0635-4f94-8da5-5527f4dfb53e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Microsoft JhengHei" size="42" isBold="true"/>
+					<paragraph tabStopWidth="1"/>
+				</textElement>
+				<text><![CDATA[N  E  U  R  O  L  A  B]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="75" width="555" height="1" uuid="e086e06f-67de-4f21-8bba-34c050f49b4b"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="560" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="555" height="25" forecolor="#545584" uuid="c3ec46cc-ce62-4b9e-a4f6-8c372ef0fbb0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="25" width="555" height="74" forecolor="#545584" uuid="0e753cc0-7e49-4bb0-8f84-c3c064ed8952"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A QUIEN INTERESE"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="99" width="555" height="22" forecolor="#545584" uuid="0bcf3f80-44ef-47b4-8915-c561f594a45d"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PRESENTE"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="121" width="555" height="56" forecolor="#545584" uuid="2657fb59-6ad2-4f68-8d16-5bf0a37946f6"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Por este medio hago <b>CONSTAR QUE</b> el Paciente <b>" + $P{PACIENTE} +"</b> se presentó este día  a nuestra clínica  a la realización de estudio  de: "]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="177" width="555" height="42" forecolor="#545584" uuid="0b96b500-9335-4ce2-a44d-8450f95c3e05"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EXAMENES}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="219" width="555" height="28" forecolor="#545584" uuid="330596ab-884c-4f98-8822-94676e676c57"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Hora de Entrada:" +$P{HORAENTRADA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="247" width="555" height="26" forecolor="#545584" uuid="e0b57d1f-ed2d-43c5-b5a2-85bfcdbcd07f"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Hora de Salida:   " +$P{HORASALIDA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="273" width="555" height="52" forecolor="#545584" uuid="1332b9f9-39ae-4ca9-ad75-d5c51af8c4a8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Y para los usos que estime conveniente extiendo la presente,"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="325" width="555" height="155" forecolor="#545584" uuid="b336ac61-8f54-4d05-80f7-1613e3a93c87"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Atentamente"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="480" width="555" height="62" forecolor="#545584" uuid="12a94268-df6f-4389-8685-2d229f4cf2ce"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ATENTAMENTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="542" width="555" height="18" forecolor="#545584" uuid="b388e825-54ba-4d03-bcf1-31fc5e10c42c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Asistente medico"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#545584" uuid="5b021393-96d3-4ad4-8946-76e63395783b"/>
+				<textElement textAlignment="Center" markup="html">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>Colonia Médica:</b>, Pasaje Dr. Mariano Samayoa #119. Teléfono: 2225-3439, Telefax: 2235-3066"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

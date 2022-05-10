@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportSolicitud" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d23e5de-084b-4687-8e3f-065fbf81eb95">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PARAMETRO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 1 FROM DUAL]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="c4461a86-253c-448b-aba6-6805a99eb2c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESIDENCIA DE LA REPUBLICA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="4ada7f5b-5f47-43c5-b293-18e21d7c9d3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOLICITUD TRANSPORTE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="415" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="24" width="142" height="20" uuid="df0e916e-1bee-4ab8-b6d1-fa2826b1e33b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidad o Departamento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="24" width="413" height="20" uuid="0bd0eb63-8488-4661-9eea-7c6e09f891ac"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="44" width="142" height="20" uuid="75a6e78b-eaf4-43d9-9ef1-97488dad12cd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solicitante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="44" width="413" height="20" uuid="23275cf7-c64f-4225-9da1-66cba70ac880"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="64" width="142" height="20" uuid="bddf2d18-1251-4751-9a55-682cfacd9aa4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destino:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="64" width="413" height="20" uuid="1320cafd-4b54-4a82-80c3-967acfe19dca"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="84" width="142" height="20" uuid="22fde684-0acb-45fd-8a23-8012112d3539"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[A la orden de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="104" width="142" height="20" uuid="cbb0abe0-e32d-4132-a2c5-178817ac16cc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Acompañante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="84" width="413" height="20" uuid="9728ca78-8b16-4ea1-9c2c-5a414a4d4038"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="104" width="413" height="20" uuid="dc4858dd-8d24-4c19-88f7-629d99d4eecd"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="143" width="142" height="20" uuid="d1c16a18-c408-4408-b186-ab0c7e226753"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha::]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="143" width="413" height="20" uuid="4098beea-ba5d-44b8-a0e3-0f5f2f7961d8"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="311" width="270" height="27" uuid="70962d6e-6585-41c3-8a57-7fe535f79f36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Firma, Nombre y Sello del Solicitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="311" width="285" height="27" uuid="f0266130-03ca-4340-9b54-c05582f79219"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Firma Autorizada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="375" width="186" height="20" uuid="ef7ea4ab-26ca-4911-a326-66c337c17d35"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motorista Asignado para la comisión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="395" width="186" height="20" uuid="03de99a8-360d-491d-a7c7-52aa501de61a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehículo Asignado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="186" y="375" width="369" height="20" uuid="952b3045-2de0-4b96-befd-abdf7439f290"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="186" y="395" width="369" height="20" uuid="16e96f70-3343-4be6-9d79-4aabe2458e73"/>
+				<textFieldExpression><![CDATA[$P{PARAMETRO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="308" width="258" height="1" uuid="fb30c1e9-bc35-487c-9dfa-e9d6a92ac823"/>
+			</line>
+			<line>
+				<reportElement x="270" y="308" width="258" height="1" uuid="273decec-6075-49f1-9810-eb0e1e715f6c"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="referenciaExamenes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b87e0bfc-8f70-4b0d-a6f8-4369ff1a39de">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="238"/>
+	<parameter name="PACIENTE" class="java.lang.Integer"/>
+	<parameter name="examen54" class="java.lang.Integer"/>
+	<parameter name="examen53" class="java.lang.Integer"/>
+	<parameter name="examen51" class="java.lang.Integer"/>
+	<parameter name="examen52" class="java.lang.Integer"/>
+	<parameter name="examen4" class="java.lang.Integer"/>
+	<parameter name="examen5" class="java.lang.Integer"/>
+	<parameter name="examen1" class="java.lang.Integer"/>
+	<parameter name="examen2" class="java.lang.Integer"/>
+	<parameter name="examen6" class="java.lang.Integer"/>
+	<parameter name="examen3" class="java.lang.Integer"/>
+	<parameter name="examen7" class="java.lang.Integer"/>
+	<parameter name="examen8" class="java.lang.Integer"/>
+	<parameter name="examen9" class="java.lang.Integer"/>
+	<parameter name="examen10" class="java.lang.Integer"/>
+	<parameter name="examen11" class="java.lang.Integer"/>
+	<parameter name="examen12" class="java.lang.Integer"/>
+	<parameter name="examen13" class="java.lang.Integer"/>
+	<parameter name="examen14" class="java.lang.Integer"/>
+	<parameter name="examen15" class="java.lang.Integer"/>
+	<parameter name="examen16" class="java.lang.Integer"/>
+	<parameter name="examen17" class="java.lang.Integer"/>
+	<parameter name="examen18" class="java.lang.Integer"/>
+	<parameter name="examen19" class="java.lang.Integer"/>
+	<parameter name="examen20" class="java.lang.Integer"/>
+	<parameter name="examen21" class="java.lang.Integer"/>
+	<parameter name="examen23" class="java.lang.Integer"/>
+	<parameter name="examen25" class="java.lang.Integer"/>
+	<parameter name="examen26" class="java.lang.Integer"/>
+	<parameter name="examen27" class="java.lang.Integer"/>
+	<parameter name="examen28" class="java.lang.Integer"/>
+	<parameter name="examen29" class="java.lang.Integer"/>
+	<parameter name="examen30" class="java.lang.Integer"/>
+	<parameter name="examen31" class="java.lang.Integer"/>
+	<parameter name="examen32" class="java.lang.Integer"/>
+	<parameter name="examen33" class="java.lang.Integer"/>
+	<parameter name="examen34" class="java.lang.Integer"/>
+	<parameter name="examen35" class="java.lang.Integer"/>
+	<parameter name="examen36" class="java.lang.Integer"/>
+	<parameter name="examen37" class="java.lang.Integer"/>
+	<parameter name="examen39" class="java.lang.Integer"/>
+	<parameter name="examen40" class="java.lang.Integer"/>
+	<parameter name="examen41" class="java.lang.Integer"/>
+	<parameter name="examen42" class="java.lang.Integer"/>
+	<parameter name="examen43" class="java.lang.Integer"/>
+	<parameter name="examen44" class="java.lang.Integer"/>
+	<parameter name="examen45" class="java.lang.Integer"/>
+	<parameter name="examen46" class="java.lang.Integer"/>
+	<parameter name="examen47" class="java.lang.Integer"/>
+	<parameter name="examen48" class="java.lang.Integer"/>
+	<parameter name="examen49" class="java.lang.Integer"/>
+	<parameter name="examen50" class="java.lang.Integer"/>
+	<parameter name="examen24" class="java.lang.Integer"/>
+	<parameter name="examen60" class="java.lang.Integer"/>
+	<parameter name="examen65" class="java.lang.Integer"/>
+	<parameter name="examen66" class="java.lang.Integer"/>
+	<parameter name="idcita" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="examen103" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select agd.id_paciente,agd.nombre,get_edad(agd.fecha_nacimiento) as fechaNacimiento, agc.DATO_REFERENCIA,agc.OTROS_REFERENCIA
+ from agd_paciente agd ,agd_cita agc where agd.ID_PACIENTE = $P{PACIENTE} and agc.id_paciente=agd.id_paciente and agc.id_cita=$P{idcita}]]>
+	</queryString>
+	<field name="id_paciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaNacimiento" class="java.lang.String"/>
+	<field name="DATO_REFERENCIA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OTROS_REFERENCIA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="4" width="555" height="70" uuid="ebdfb55b-e9e3-472b-96e1-3fe4e244263e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="4" width="551" height="70" forecolor="#545584" uuid="5fe2cd30-0635-4f94-8da5-5527f4dfb53e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Microsoft JhengHei" size="47" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N  E  U  R  O  L  A  B]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="708" splitType="Stretch">
+			<staticText>
+				<reportElement x="127" y="17" width="49" height="15" forecolor="#545584" uuid="d9791077-24dd-4838-87a5-2266cefd9687"/>
+				<text><![CDATA[Paciente:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="182" y="31" width="362" height="1" forecolor="#545584" uuid="95be4af5-7612-49f4-87fe-c32c95d43217"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="31" width="49" height="15" forecolor="#545584" uuid="914ffba8-e55c-428f-bef5-c5288dd75e27"/>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="68" y="47" width="214" height="1" forecolor="#545584" uuid="2a9d885f-5d94-4acf-9fb7-74d716f98ebd"/>
+			</line>
+			<line>
+				<reportElement x="379" y="47" width="165" height="1" forecolor="#545584" uuid="61dfcf05-c72e-4848-956c-a20055632fc1"/>
+			</line>
+			<staticText>
+				<reportElement x="292" y="32" width="252" height="15" forecolor="#545584" uuid="316cd371-0818-4254-88a1-1e1b0d92a096"/>
+				<text><![CDATA[Medico que Refirio: DR. WALTER SANCHEZ VIDES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="46" width="49" height="15" forecolor="#545584" uuid="d08d2b5b-a6b8-44d8-b2f7-ff8085c1e502"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="68" y="62" width="476" height="1" forecolor="#545584" uuid="3e674820-5adb-4e25-a901-518f1dcd0fe3"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="68" y="47" width="476" height="15" forecolor="#545584" uuid="c3ec46cc-ce62-4b9e-a4f6-8c372ef0fbb0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="63" width="49" height="15" forecolor="#545584" uuid="6d0a055d-dc2b-4b17-abaa-9bb6fb40aba7"/>
+				<text><![CDATA[Datos Clinicos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="172" width="173" height="15" forecolor="#545584" uuid="26fc2e0b-3142-4d76-bec7-2a60e81ac02f"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[1. Electroencefalgroma Digital Computarizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="204" width="173" height="15" forecolor="#545584" uuid="8f201518-bd2c-4c5f-a487-e54314dfce62"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[2. Videoelectroencefalograma digital]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="2" y="0" width="552" height="142" uuid="947f8b6f-69b8-4067-a5fc-1bba64d4eea3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="219" width="37" height="15" forecolor="#545584" uuid="45edc301-7d7e-4124-80a3-e1bb5d4fdb0c"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1 Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="234" width="37" height="15" forecolor="#545584" uuid="4c9aee4e-033e-4949-81b7-dbd3ba68bcd7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="249" width="37" height="15" forecolor="#545584" uuid="c3f2eec1-8e56-40b1-bdc7-abcfff3eea48"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="219" width="37" height="15" forecolor="#545584" uuid="122802f5-00c5-4e26-83d1-ff006132d44c"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[4 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="249" width="36" height="15" forecolor="#545584" uuid="f0ac4598-f5e0-4995-ba3e-63db80b6e161"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[8 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="234" width="37" height="15" forecolor="#545584" uuid="45ab393f-8a28-4c2b-86d2-d8d91ce53e06"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[6 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="219" width="43" height="15" forecolor="#545584" uuid="828b8968-8f42-42f0-9384-4ffbb7c9157d"/>
+				<textElement textAlignment="Center">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[12 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="249" width="43" height="15" forecolor="#545584" uuid="e60f27c1-088c-4311-8238-43e2d684bcc3"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[24 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="234" width="43" height="15" forecolor="#545584" uuid="4495eec9-0e59-4de0-a36a-5a4446835ef1"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[18 Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="274" width="173" height="26" forecolor="#545584" uuid="1aa8fc68-7d9f-42c6-942c-0228f3af78a4"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[3. Electroencefalograma amplitud integrada (Neonatos)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="300" width="171" height="15" forecolor="#545584" uuid="e0f0b0b8-b66a-4559-9a1d-9223f45b1d56"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[4. Electromiografía]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="315" width="153" height="15" forecolor="#545584" uuid="aa8ea2aa-9e5c-442f-90ab-0f5e77758d0c"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Superiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="330" width="153" height="15" forecolor="#545584" uuid="2f2ba2f0-212f-4f9b-b8e5-69650d691ed4"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Inferiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="345" width="153" height="15" forecolor="#545584" uuid="1aad2d53-5297-40d3-97af-6c7e845287c9"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Cuatro Miembros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="360" width="153" height="15" forecolor="#545584" uuid="55f70d2c-cc10-45db-9522-1a88b08dc36f"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Facial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="375" width="172" height="15" forecolor="#545584" uuid="9ad71bc3-da88-4449-bc03-292ccd3c0161"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[EMG con aplicación de toxina botulinica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="400" width="171" height="15" forecolor="#545584" uuid="10f2824a-ee5c-4daa-8c45-55fb969f01e0"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[5.Velocidad de Conducción Nerviosa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="430" width="153" height="15" forecolor="#545584" uuid="1cc0122c-943d-4dfb-9a2a-57ea0c0d3ba7"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Inferiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="415" width="153" height="15" forecolor="#545584" uuid="601470ce-825e-4990-99b7-2175ced1f10a"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Superiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="445" width="153" height="15" forecolor="#545584" uuid="65b7bbe7-cd8e-4e9d-8b51-d316b9b4db76"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Cuatro Miembros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="460" width="153" height="15" forecolor="#545584" uuid="5d481a2b-2dc7-4a4a-a95c-1334145c5b05"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Facial (Neurografía)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="502" width="171" height="15" forecolor="#545584" uuid="6c46d132-1564-44b8-b651-1dc5745a8abf"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[6. Onda "F"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="547" width="153" height="15" forecolor="#545584" uuid="d126012f-85c9-4cb1-9210-1b6a5628c312"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Cuatro Miembros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="517" width="153" height="15" forecolor="#545584" uuid="43230255-9313-45ea-acb5-b3026663db44"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Superiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="532" width="153" height="15" forecolor="#545584" uuid="6030f1ed-62c0-4279-99fc-1f83376b72ea"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Inferiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="562" width="153" height="15" forecolor="#545584" uuid="c44dc5d3-db0a-40b5-9f0a-7a5e5da26928"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Facial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="177" width="91" height="15" forecolor="#545584" uuid="a3b0c572-6bc1-4b96-ba54-e0306d28f105"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[7. Test de Miastenia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="202" width="74" height="15" forecolor="#545584" uuid="abe7919b-be10-452e-a8bc-7e1b8cc4d1e6"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[(Test Repetitivo)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="222" width="93" height="21" forecolor="#545584" uuid="6733e0c7-128d-4dc8-893c-8c4968c87f8e"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[8. Reflejo Simpático Periférico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="247" width="143" height="25" forecolor="#545584" uuid="399b98f2-41e7-4c73-be6e-402cd799850e"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[9. Potenciales Evocados Somato-Sensibles]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="287" width="112" height="15" forecolor="#545584" uuid="3eb6bd6a-eb65-400c-ad50-859d3b9a4a86"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Inferiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="272" width="111" height="15" forecolor="#545584" uuid="29db89b4-c0a8-41fc-967f-9ff0145b8744"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Miembros Superiores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="302" width="112" height="15" forecolor="#545584" uuid="7ac71b89-3b47-4178-9625-ad5439a46b6b"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Cuatro Miembros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="369" width="131" height="15" forecolor="#545584" uuid="f67a07b3-780c-4277-bd5a-6cc2f93471b8"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[10. Potenciales Evocados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="399" width="112" height="15" forecolor="#545584" uuid="24d4cc6c-2a06-459f-ad2b-714c48be25a1"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Umbral Auditivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="384" width="112" height="15" forecolor="#545584" uuid="bb8cef26-b39e-450b-9ae2-84e014ff3889"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Auditivos y de Tallo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="415" width="109" height="24" forecolor="#545584" uuid="81cf6b99-6192-49db-a125-b2b39e77c233"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[11.Potenciales Evocados Visuales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="439" width="112" height="15" forecolor="#545584" uuid="38ab8464-7acb-4ec3-abaf-169d548cd69d"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Lentes (Google)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="454" width="112" height="15" forecolor="#545584" uuid="ecc825fe-ce2a-4fd5-8bff-35ab0ff243af"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Por pantalla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="469" width="115" height="22" forecolor="#545584" uuid="2e2815a9-fb05-480c-9ad0-5b1ca83a3e94"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[ 12.Potenciales Evocados Miógenos Vestibulares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="491" width="127" height="24" forecolor="#545584" uuid="2edcf89f-ec3e-426f-adf5-3967ac047e75"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[13.Reflejo de Parpadeo  (Blink reflex)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="515" width="113" height="15" forecolor="#545584" uuid="15aefcce-3479-4733-9269-2f9833a0a255"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[14.Reflejo H]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="173" width="147" height="15" forecolor="#545584" uuid="31b143e0-8106-4d0f-9972-63a315b21b3b"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[15. P-300 (Potenciales cognitivos)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="198" width="136" height="30" forecolor="#545584" uuid="a81a3b70-46b8-4f1e-9427-446a56674333"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[16. CPT (Diagnóstico de hiperactividad y/o deficit de atención]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="243" width="136" height="15" forecolor="#545584" uuid="8890ed29-d07a-41a8-a8fb-573275bca892"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[17. Polisomnografia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="258" width="136" height="15" forecolor="#545584" uuid="e4ee3a0b-3397-43a7-b648-58cba842651a"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Protocolo de noche partida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="273" width="136" height="15" forecolor="#545584" uuid="9687bf7c-cec9-4046-bf87-1c2ad07c16d5"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Protocolo de epilepsia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="288" width="136" height="15" forecolor="#545584" uuid="32e70510-a0d6-442a-98c0-d6509c204b7b"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Con Titulación de CPAP 1 Noches]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="303" width="136" height="15" forecolor="#545584" uuid="adf147a9-a972-4b54-840f-735ffe3501ec"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Con Titulación de CPAP 2 Noches]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="318" width="136" height="15" forecolor="#545584" uuid="7afb11b7-796c-48a3-88e9-e6ea8a69d279"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Con Titulación de CPAP 3 Noches]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="333" width="136" height="15" forecolor="#545584" uuid="5e2f2faa-ed0c-4b67-af55-fadd7ebbcd45"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Con Titulación de CPAP 4 Noches]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="369" width="136" height="25" forecolor="#545584" uuid="39510651-2dbf-4c36-9701-4dbc3b534a6c"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[18. Polisomnografía + Test de Latencia Múltiple (Narcolepsia)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="394" width="136" height="15" forecolor="#545584" uuid="996ae6b4-309c-48d4-bb36-745fad7b8f7e"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[19. Actigrafia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="409" width="136" height="15" forecolor="#545584" uuid="92506c46-762a-4179-ab40-31e51f83a92a"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[20. Electro Retinograma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="424" width="143" height="30" forecolor="#545584" uuid="094d4da2-de69-42da-8683-a69539a2860d"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[21. QIK TEST (Diagnostico de Hiperactividad y/o déficit de atención)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="454" width="136" height="15" forecolor="#545584" uuid="886c6362-cee9-43ce-bc41-82e96e7389dd"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[22. NEUROFEEDBACK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="469" width="136" height="15" forecolor="#545584" uuid="0b6fa756-ee71-4088-a83d-d935ac5f2f17"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[23. Estudio de Temblor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="484" width="124" height="22" forecolor="#545584" uuid="245074c9-43b2-4728-83dc-d3f3e1b62921"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[24. Electromiografía de Nervio Facial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="506" width="124" height="24" forecolor="#545584" uuid="43bcfa39-d95f-4f13-afe8-4f41bc013bd0"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[25. Electrodiagnóstico del Nervio Pudendo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="651" width="422" height="15" forecolor="#545584" uuid="e409fe59-538a-4992-823f-cb348a24211a"/>
+				<text><![CDATA[Pasaje Dr. Mariano Samayoa #119, S.S.                  Tels: 2235-3066 , 2235-5953]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="666" width="107" height="15" forecolor="#545584" uuid="2beba852-8312-42c0-b8f0-f7143e7bd096"/>
+				<text><![CDATA[COLONIA ESCALON:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="666" width="422" height="15" forecolor="#545584" uuid="29bb85f9-f963-40b0-99b7-f345c57c0aad"/>
+				<text><![CDATA[9a C. Pte N° 3972, entre 75 y 77 Av. Norte.              Tels: 2264-5047 ,7697-0133]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="681" width="107" height="15" forecolor="#545584" uuid="62595f03-7e40-4d8e-94c9-c595e5112989"/>
+				<text><![CDATA[EMERGENCIAS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="681" width="423" height="15" forecolor="#545584" uuid="85650b2a-2a63-47b7-91b5-738e97e4b2f8"/>
+				<text><![CDATA[7768-7888                                          Asistencia por Whastapp: (503) 7468-8283]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="0" y="646" width="554" height="62" forecolor="#545584" uuid="f1d2ec56-fb93-4c39-b4c7-9e55eea3377b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="17" width="49" height="15" forecolor="#545584" uuid="d3440db3-5875-4fa3-866d-d228045eddc0"/>
+				<text><![CDATA[Codigo:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="68" y="32" width="59" height="1" forecolor="#545584" uuid="7c5efdce-d137-4a91-bc57-410eba1fe5ac"/>
+			</line>
+			<textField>
+				<reportElement x="68" y="13" width="55" height="18" forecolor="#545584" uuid="fc4f3d61-16a5-4dde-9764-07d240cfdd1b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_paciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="13" width="361" height="18" forecolor="#545584" uuid="85e72dc5-eb83-4d94-9192-8f89421c46c0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="33" width="214" height="14" forecolor="#545584" uuid="e45077f7-3f19-4133-ac4f-f481c5de5aaf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaNacimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="239" y="317" width="112" height="15" forecolor="#545584" uuid="e34c5e23-b7da-4f38-b5a3-ae01fdc73acd"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Trigeminales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="332" width="112" height="15" forecolor="#545584" uuid="50af597e-5a73-4b97-9ca6-14f723165ef1"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Por Dermatomas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="475" width="172" height="15" forecolor="#545584" uuid="15f99a64-3a36-43f2-8404-90702a93e1e3"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Rastreo de Nervio Mediano o Inching]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="219" width="16" height="15" forecolor="#545584" uuid="a8d52e9c-10ce-4984-8cc5-0bc4e561a536"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen54}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="234" width="16" height="15" forecolor="#545584" uuid="04b6aeb7-6ece-4cf0-b88c-d9ddaefc8679"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen53}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="249" width="16" height="15" forecolor="#545584" uuid="2f825ede-b2e8-4a5c-9302-31265a23f368"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen52}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="68" y="219" width="16" height="15" forecolor="#545584" uuid="7d3b0062-7227-43a1-a38c-656d626bfcfe"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen4}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="68" y="234" width="16" height="15" forecolor="#545584" uuid="4030bf8e-1fb8-4104-958d-9ba527256179"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen5}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="68" y="249" width="16" height="15" forecolor="#545584" uuid="4f13d22c-97a6-4fa5-8fe7-92582764ad4b"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen51}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="122" y="219" width="16" height="15" forecolor="#545584" uuid="813ed1d2-1e07-4e3c-9af6-653108804e78"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen2}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="122" y="234" width="16" height="15" forecolor="#545584" uuid="f1497bd3-1ce1-45b9-b88b-11e75735e318"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen6}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="122" y="249" width="16" height="15" forecolor="#545584" uuid="4a994d23-b0f5-4812-9b97-59851091a10a"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen3}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="172" width="16" height="15" forecolor="#545584" uuid="bb0ef2b5-eed8-4114-8c83-2b854f574809"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen1}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="274" width="16" height="15" forecolor="#545584" uuid="6b23d7da-d788-42d9-b2fc-c2cda0bd77c0"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen7}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="315" width="16" height="15" forecolor="#545584" uuid="d2aeab89-61b0-42dc-b352-107a2401d5c2"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen8}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="330" width="16" height="15" forecolor="#545584" uuid="54c78197-f770-4e42-a1ec-34bb903f2be1"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen9}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="345" width="16" height="15" forecolor="#545584" uuid="2aee46ec-6c3e-4d7e-b4a0-13a3feab14d7"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen10}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="360" width="16" height="15" forecolor="#545584" uuid="e51c1836-0080-44ee-8926-41c105d730da"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen11}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="375" width="16" height="15" forecolor="#545584" uuid="7fd2dfb4-8f36-4a56-a7f5-1fc5d57d6d29"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen12}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="415" width="16" height="15" forecolor="#545584" uuid="2bbb4316-4510-4c73-b31e-dc3456410b51"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen13}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="430" width="16" height="15" forecolor="#545584" uuid="573743cf-ee0c-466b-b269-1f27f402e8af"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen14}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="445" width="16" height="15" forecolor="#545584" uuid="b4a51d1e-c3ca-49fe-9e0e-e1d1725200a6"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen15}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="460" width="16" height="15" forecolor="#545584" uuid="758b09b4-c4e8-48de-85fb-8683865a1bf0"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen16}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="475" width="16" height="15" forecolor="#545584" uuid="72b48eb8-f37c-4d74-ad8a-a20444a46486"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="517" width="16" height="15" forecolor="#545584" uuid="fcad93ce-2c80-429a-bb99-35b76d207254"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen17}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="532" width="16" height="15" forecolor="#545584" uuid="b53554ef-6fd8-409c-a577-b44a28e162c3"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen18}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="547" width="16" height="15" forecolor="#545584" uuid="15e290cc-b103-40c9-af80-a8ab84f63f89"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen19}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="562" width="16" height="15" forecolor="#545584" uuid="3d9f5ccb-aaa2-4c9b-b0b5-5bbf2629318e"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen20}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="202" width="16" height="15" forecolor="#545584" uuid="7aa095a3-4f2b-4c17-99fe-30490c00498d"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen21}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="222" width="16" height="15" forecolor="#545584" uuid="0dae67ec-8476-42d6-b64f-89a0c96d830f"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen23}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="272" width="16" height="15" forecolor="#545584" uuid="842c9df9-b4bb-4865-9a1e-0935a7a9bb87"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen24}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="287" width="16" height="15" forecolor="#545584" uuid="4d1c87fa-cf17-4371-98fc-6c6144dfad29"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen25}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="302" width="16" height="15" forecolor="#545584" uuid="87489e11-cdee-4e23-b27a-43c4a97353b9"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen26}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="317" width="16" height="15" forecolor="#545584" uuid="a2e0658b-d53e-43bd-bcdc-a5f7bdf59da1"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen27}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="332" width="16" height="15" forecolor="#545584" uuid="64c690cb-0d45-41b3-bc74-57c193ad8d1a"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen28}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="222" y="384" width="16" height="15" forecolor="#545584" uuid="73fc3040-4f99-483e-9261-43ddfc3cdac6"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen29}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="222" y="399" width="16" height="15" forecolor="#545584" uuid="9247b71c-f119-4a50-89dc-a038d8d4e08f"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen30}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="221" y="439" width="16" height="15" forecolor="#545584" uuid="d67fc559-45e3-4376-bb4a-d92e4df63d23"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen31}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="221" y="454" width="16" height="15" forecolor="#545584" uuid="cfb13e28-36a4-4b7b-b368-8b56a6f142f2"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen32}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="221" y="469" width="16" height="15" forecolor="#545584" uuid="7da7887b-a0b7-4257-ad75-63dd6dc2ebbd"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen33}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="221" y="491" width="16" height="15" forecolor="#545584" uuid="96cfa6c7-2304-438d-960e-e1fe9e0f173d"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen34}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="221" y="515" width="16" height="15" forecolor="#545584" uuid="f4f507ce-4468-41fb-b194-c4fc1baf8bfe"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen35}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="173" width="16" height="15" forecolor="#545584" uuid="9195dcd3-4607-4824-97a3-2d4b2cd3a91c"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen36}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="198" width="16" height="15" forecolor="#545584" uuid="6e607eb4-44d8-46a8-ac88-0973e1d9bd93"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen37}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="243" width="16" height="15" forecolor="#545584" uuid="74122ddd-bf29-4bd8-b962-62c237ee522b"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen39}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="506" width="16" height="15" forecolor="#545584" uuid="46d38cf5-4b11-48ba-b3c9-85963f496417"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen66}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="484" width="16" height="15" forecolor="#545584" uuid="7d7c715c-79dc-461e-a96f-ad6da7817669"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen65}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="469" width="16" height="15" forecolor="#545584" uuid="49a9631f-4fb9-4e71-bc55-7293a5366999"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen60}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="454" width="16" height="15" forecolor="#545584" uuid="e3a2ecce-ed88-4d3d-beac-e73a759aa20f"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen50}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="424" width="16" height="15" forecolor="#545584" uuid="605389b2-f632-4fc7-9467-ecf57491d43a"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen49}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="409" width="16" height="15" forecolor="#545584" uuid="e7b0566b-2915-458d-8f60-13b425b294ab"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen48}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="394" width="16" height="15" forecolor="#545584" uuid="79f40a6a-d86d-4b21-a261-832c44e8c2ee"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen47}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="369" width="16" height="15" forecolor="#545584" uuid="02aea618-c3aa-4213-a196-f8363f8c0c81"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen46}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="258" width="16" height="15" forecolor="#545584" uuid="f691bb8a-3e8d-4135-81ae-17ccc8a8c1f4"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen40}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="273" width="16" height="15" forecolor="#545584" uuid="c4644fe4-27d1-4395-b803-4432827313af"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen41}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="288" width="16" height="15" forecolor="#545584" uuid="96c5ef97-5ae5-4e34-9b12-91684a0c3189"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen42}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="303" width="16" height="15" forecolor="#545584" uuid="0b7759a4-0fbe-426a-a069-f47ab3cf34aa"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen44}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="318" width="16" height="15" forecolor="#545584" uuid="2d40ed06-470f-408c-acd1-7772f9b9c379"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen45}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="333" width="16" height="15" forecolor="#545584" uuid="c7649ba2-7598-4dd4-a252-b2bb7dd3b070"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen43}.equals( 1 )? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="67" y="63" width="478" height="72" forecolor="#545584" uuid="211c08ac-1e53-42d9-b043-607ca1c8439e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isItalic="false" isUnderline="false"/>
+					<paragraph firstLineIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATO_REFERENCIA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="48" y="596" width="478" height="36" forecolor="#545584" uuid="b0fa82c6-2259-4170-b597-834ca422c27c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isItalic="false" isUnderline="false"/>
+					<paragraph firstLineIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OTROS_REFERENCIA}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="378" y="167" width="176" height="422" uuid="bcba4383-a36b-4877-8a24-c2e8b00019ea"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="-1" y="596" width="49" height="15" forecolor="#545584" uuid="88e50736-5708-4536-b1ac-8eac481b1d7a"/>
+				<text><![CDATA[Otros:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="651" width="107" height="15" forecolor="#545584" uuid="ccdfe5f7-ec75-4446-a5ae-b2733c67fa9d"/>
+				<text><![CDATA[COLONIA MEDICA:]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="209" y="167" width="161" height="422" uuid="85f711d5-2a5b-4d69-ab41-dc4996035c7d"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="187" width="16" height="15" forecolor="#545584" uuid="7e1c2a83-bba8-4f00-8155-3bda2a72ac3d"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{examen103}.equals( 103 )? "X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="187" width="173" height="15" forecolor="#545584" uuid="7ff5ece9-9ccf-4c8f-9693-bb7023346c4e"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Portátil]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="3" y="167" width="197" height="422" uuid="6fc09fa3-5caa-45cf-be91-3765c1d50fd6"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportTransaccion" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e5e007a-ced8-4406-ab42-73401b83f2a4">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="463"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="examenes" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechainicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechafin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idreferido" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idinstitucion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idlaboratorio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_PATH" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+agi.nombre as institucion,
+agr.nombre as referido,
+agp.nombre as paciente,
+CONCAT(cae.CATEGORIA_EXAMEN,' ',cae.NOMBRE_EXAMEN) as  examen,
+tdh.honorario,
+COUNT(NOMBRE_EXAMEN) AS cantidad,
+SUM(tdh.honorario) as total
+FROM
+tra_transaccion tra left join agd_institucion agi on tra.id_institucion=agi.id_institucion left join agd_referido agr on tra.id_referido=agr.id_referido ,
+tra_transaccion_detalle trd,
+tra_transaccion_detalle_honorario tdh,
+cat_examen cae,
+cat_laboratorio clb,
+
+agd_paciente agp
+where tra.id_transaccion=trd.id_transaccion and  tra.estado=1 and trd.id_transaccion_detalle=tdh.id_transaccion_detalle
+and trd.id_examen=cae.id_examen  and tra.id_paciente=agp.id_paciente
+and tra.ID_ESTADO_COLA_EXAMEN=5 and tra.id_laboratorio=clb.id_laboratorio
+AND ($P{idlaboratorio} is null or $P{idlaboratorio}= tra.ID_LABORATORIO)
+AND( $P{idreferido} is null or $P{idreferido} = tra.id_referido)
+AND( $P{idinstitucion} is null or $P{idinstitucion}= tra.id_institucion)
+
+
+AND ($P{fechainicio} = '' or  STR_TO_DATE(DATE_FORMAT(tra.FECHA_CREACION, '%d/%m/%Y %H:%i'), '%d/%m/%Y %H:%i') >= STR_TO_DATE($P{fechainicio}, '%d/%m/%Y %H:%i') )
+AND ($P{fechafin} ='' or STR_TO_DATE(DATE_FORMAT(tra.FECHA_CREACION, '%d/%m/%Y %H:%i'), '%d/%m/%Y %H:%i') <= STR_TO_DATE($P{fechafin}, '%d/%m/%Y %H:%i'))
+ $P!{examenes}
+group by agi.nombre,agr.nombre,agp.nombre,CONCAT(cae.CATEGORIA_EXAMEN,' ',cae.NOMBRE_EXAMEN),tdh.honorario
+order by institucion,referido,examen]]>
+	</queryString>
+	<field name="institucion" class="java.lang.String"/>
+	<field name="referido" class="java.lang.String"/>
+	<field name="paciente" class="java.lang.String"/>
+	<field name="examen" class="java.lang.String"/>
+	<field name="honorario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="V_CANTIDAD_EXAMEN" class="java.lang.Integer" resetType="Group" resetGroup="grp_referido" calculation="Count">
+		<variableExpression><![CDATA[$F{examen}]]></variableExpression>
+	</variable>
+	<variable name="V_TOTAL_INSTITUCION" class="java.lang.Number" resetType="None" incrementType="Group" incrementGroup="grp_institucion" calculation="Sum">
+		<variableExpression><![CDATA[$F{honorario}*$V{V_CANTIDAD_EXAMEN}]]></variableExpression>
+	</variable>
+	<variable name="V_TOTAL_EXAMEN" class="java.lang.Number" resetType="Group" resetGroup="grp_institucion" calculation="Sum">
+		<variableExpression><![CDATA[$F{honorario}*$V{V_CANTIDAD_EXAMEN}]]></variableExpression>
+	</variable>
+	<variable name="cantidad_1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<variable name="honorario_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{honorario}]]></variableExpression>
+	</variable>
+	<variable name="total_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<group name="grp_institucion">
+		<groupExpression><![CDATA[$F{institucion}]]></groupExpression>
+	</group>
+	<group name="grp_referido">
+		<groupExpression><![CDATA[$F{referido}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="714" y="39" width="75" height="20" uuid="37028ce6-3f1d-457a-91f1-61ebef43e545"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="665" y="39" width="49" height="20" uuid="ce7976ab-5bea-40a6-8f29-3e9029ab6f7c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Generado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="714" y="19" width="75" height="20" uuid="912e0984-59c7-43e5-bb7b-198d2a7890fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="665" y="19" width="49" height="20" uuid="cfb34618-57de-49f7-86f9-eb3e48eb4431"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="13" width="413" height="26" uuid="3d566161-da18-4191-b30d-d3524905d46f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTES DE HONORARIOS MÉDICOS REFERIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="49" width="54" height="10" uuid="3c67f7c4-961f-48b2-924c-907bf0b4eefd"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="49" width="54" height="10" uuid="f6de45fe-aa7b-4070-b8cf-332827641f1a"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Fecha Fin:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="562" y="79" width="61" height="20" backcolor="#3399FF" uuid="5981d4b9-abc5-4f33-98d8-7e050b7f2f1f"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CANTIDAD"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="623" y="79" width="91" height="20" backcolor="#3399FF" uuid="c20585c7-c7c4-4228-9a87-8a1ab76d8038"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["HONORARIO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="714" y="79" width="88" height="20" backcolor="#3399FF" uuid="64f190f0-603c-4522-83e2-63a877bb6c6e"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="79" width="200" height="20" backcolor="#3399FF" uuid="f0f37a87-836b-4313-bf05-b8f3de725b60"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["INSTITUCION"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="200" y="79" width="116" height="20" backcolor="#3399FF" uuid="64238797-3706-40d6-81b6-42e7e58a586d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REFERIDO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="316" y="79" width="246" height="20" backcolor="#3399FF" uuid="25ab5f40-73e0-4d33-a96c-327bc35321cf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EXAMEN"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="217" y="49" width="123" height="10" uuid="6ab603a6-02ef-430c-beec-68ef2e5f3375"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechainicio}.equals( null ) ?"":$P{fechainicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="49" width="152" height="10" uuid="da9aae42-3c65-4d65-af1d-4c23c7a905d8"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechafin}.equals( null ) ?"":$P{fechafin}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Icon">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="191" height="45" uuid="613fcd39-a152-4f59-b3dc-1c062ca90184"/>
+				<imageExpression><![CDATA[net.sf.jasperreports.engine.util.JRImageLoader.getInstance(new SimpleJasperReportsContext()).loadAwtImageFromBytes(javax.xml.bind.DatatypeConverter.parseBase64Binary($P{IMAGE_PATH}))]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="20" uuid="37defd28-60ff-43cd-b45f-750a4aa0705f"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="116" height="20" uuid="ce472103-c26c-4f9d-8c30-cd646de66180"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="246" height="20" uuid="f0b17c12-d5b6-4a26-adde-2739363cc9ef"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{examen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="562" y="0" width="61" height="20" uuid="dc9be863-304d-4b14-a482-11928fe633ff"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="623" y="0" width="91" height="20" uuid="567fe2b0-4b0a-49d0-a58d-e6ef7d1dc8d2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{honorario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="714" y="0" width="88" height="20" uuid="9e543b9f-11f8-4ef6-9749-ff913ffc898b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="562" y="0" width="61" height="20" uuid="5c7ca714-1f42-43de-be4c-02b30592c205"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidad_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="623" y="0" width="91" height="20" uuid="e9f847ea-8ccc-4749-b31e-a0cdd9cb282c"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{honorario_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="714" y="0" width="88" height="20" uuid="11cb10f4-66bd-41e6-bffc-7a7395708831"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="316" y="0" width="246" height="20" backcolor="#3399FF" uuid="468dd0b5-3d0b-474c-a45a-3a1f002132dd"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTALES"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

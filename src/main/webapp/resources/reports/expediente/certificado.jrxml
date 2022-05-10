@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificado" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b840d39a-bd5e-40cb-acfe-251bb093b676">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="336"/>
+	<parameter name="P_PACIENTE" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CITA" class="java.lang.String"/>
+	<parameter name="IMAGE_INP" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select b.id_cita, a.id_paciente, a.NOMBRE,get_edad(fecha_nacimiento) as edad, b.peso, b.estatura, b.temperatura, b.presion, b.diagnostico_principal,b.tratamiento,b.motivo,b.perimetro_cefalico,b.observacion_certificado,b.FRECUENCIA_RESPIRATORIA,b.cardiaca
+from agd_paciente a, agd_cita b
+where a.id_paciente = b.id_paciente
+and ($P{P_CITA} is null or b.id_cita = $P{P_CITA})
+and ($P{P_PACIENTE} is null or a.id_paciente = $P{P_PACIENTE})]]>
+	</queryString>
+	<field name="id_cita" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_paciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="edad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temperatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="presion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="motivo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perimetro_cefalico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacion_certificado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FRECUENCIA_RESPIRATORIA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cardiaca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="752" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="572" height="752" uuid="40c980ed-be25-4006-bea8-9885e63f44fd"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="140" y="9" width="295" height="20" forecolor="#3333FF" uuid="ec76b24e-4420-4f0e-823c-1487199fec67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DR. WALTER EDUARDO SÁNCHEZ VIDES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="140" y="29" width="295" height="20" forecolor="#3333FF" uuid="4bb2404a-2a23-4014-abc0-938b54664747"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NEURÓLOGO PEDIATRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="125" y="49" width="324" height="20" uuid="b5a1e475-13ea-4917-8f33-e0b694c03fc3"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+					<paragraph leftIndent="3" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<text><![CDATA[COLONIA MÉDICA Pasaje Dr. Samayoa #119 y Colonia Escalón 9 Calle poniente Entre 75 y 77 Avenida Norte teléfono: 2225-3439 y 2264-5047]]></text>
+			</staticText>
+			<image onErrorType="Icon">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="108" height="69" uuid="e3937684-01c8-4eb0-a11d-5071ea200356"/>
+				<imageExpression><![CDATA[net.sf.jasperreports.engine.util.JRImageLoader.getInstance(new SimpleJasperReportsContext()).loadAwtImageFromBytes(javax.xml.bind.DatatypeConverter.parseBase64Binary($P{IMAGE_INP}))]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="548">
+			<staticText>
+				<reportElement positionType="Float" x="170" y="0" width="233" height="34" uuid="83e650b7-5b65-481c-b87d-b94f3c1e4466"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO MEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="60" width="348" height="44" uuid="ce4346df-dac1-4268-b3a8-d32ad600fbf7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[El que suscribe, Doctor en Medicina legalmente Autorizado para  ejercerla profesión en la Republica de El Salvador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="233" y="120" width="113" height="34" uuid="9b994392-8fa7-4c1e-8b1c-7c8a948765fa"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[CERTIFICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="173" width="544" height="22" uuid="f26086fd-0856-4b58-b439-04f297d77e07"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Que despues de haberse practicado un examen médico a:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="16" y="219" width="544" height="24" forecolor="#3333FF" uuid="197a8bce-5130-4e5c-80bc-6cdbf9593563"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="265" width="544" height="22" uuid="0cb2be7c-8c1a-410b-81b0-162bb1e5f679"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Establecí el diagnóstico de:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="16" y="287" width="544" height="51" uuid="362ad555-44b4-4726-b8f9-f3be6fd275d5"/>
+				<textElement markup="styled">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico_principal}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement positionType="Float" x="97" y="357" width="389" height="83" uuid="2c04c827-6e0b-425a-ab53-77965180939d"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="140" y="392" width="167" height="32" uuid="4ac5cb9d-f7ce-43ec-97d6-75e0f904ad71"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="140" y="372" width="167" height="20" uuid="88b351bf-19cf-44bd-9a26-d3fd3bcc5fa8"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="307" y="372" width="67" height="20" uuid="382bf8e6-f2cc-46a0-992a-b589db57e789"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="307" y="392" width="67" height="32" uuid="47c164bb-4554-45d8-bd82-765c00c95f3f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="374" y="372" width="67" height="20" uuid="530fb473-2a6b-4ccf-b1cd-52a35f1395c1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Talla:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="374" y="392" width="67" height="32" uuid="6d1504c7-fe49-4b54-a308-d0f8dede1991"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{estatura}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="16" y="480" width="544" height="67" uuid="76b652d0-6498-4d43-b1bc-d72374dedbe5"/>
+				<textElement markup="styled">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacion_certificado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="458" width="544" height="22" uuid="4c42899f-b578-4f73-b7eb-0ef59f9d5961"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observaciones:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="98">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="16" y="32" width="544" height="20" uuid="6ebf618f-713e-41ab-99fd-45b4fed75ebb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="52" width="544" height="20" forecolor="#000000" uuid="e39f4d79-957f-4692-a2bd-1c3d3ff8a965"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[WALTER EDUARDO SÁNCHEZ VIDES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="72" width="544" height="20" forecolor="#000000" uuid="78997720-ec8f-4a2c-bf25-dc537d4f74b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor en Medicina JVPM 7059]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="16" y="0" width="544" height="22" uuid="ca5adb1e-3ee7-444a-beee-24dc0707482a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Se extiende la presente para los usos y legales que el interesado convenga.]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

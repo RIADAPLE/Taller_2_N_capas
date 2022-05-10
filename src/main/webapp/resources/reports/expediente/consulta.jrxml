@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consulta" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b87e0bfc-8f70-4b0d-a6f8-4369ff1a39de">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="260"/>
+	<parameter name="PACIENTE" class="java.lang.String"/>
+	<parameter name="HORAENTRADA" class="java.lang.String"/>
+	<parameter name="HORASALIDA" class="java.lang.String"/>
+	<parameter name="consulta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="acompanante" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1 from dual]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Immediate">
+			<textField pattern="">
+				<reportElement x="0" y="0" width="555" height="31" forecolor="#545584" uuid="8bf52542-c548-4a27-aa02-0d945afd4ae3"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DR. WALTER EDUARDO SÁNCHEZ VIDES"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="31" width="555" height="22" forecolor="#545584" uuid="bde51f6f-2ee6-439c-9e5e-276e93b8c034"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["JVPM 7059"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="53" width="555" height="27" forecolor="#545584" uuid="e92a9fdc-c0a4-40df-b9ea-a6ec895a7962"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NEURÓLOGO PEDIATRA"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="80" width="555" height="28" forecolor="#545584" uuid="1d802c2b-afc0-4dfc-bcae-8afc894079f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Especialidad en Instituto Nacional de Pediatría, México DF"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="612" splitType="Stretch">
+			<textField pattern="">
+				<reportElement x="0" y="26" width="555" height="73" forecolor="#545584" uuid="0e753cc0-7e49-4bb0-8f84-c3c064ed8952"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A QUIEN INTERESE"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="99" width="555" height="119" forecolor="#545584" uuid="2657fb59-6ad2-4f68-8d16-5bf0a37946f6"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Por este medio hago constar que el Paciente <b>" + $P{PACIENTE} +"</b> se presentó este día  a su consulta de " + $P{consulta} + " " + $P{acompanante}
+]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="218" width="555" height="29" forecolor="#545584" uuid="330596ab-884c-4f98-8822-94676e676c57"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Hora de Entrada:" +$P{HORAENTRADA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="247" width="555" height="26" forecolor="#545584" uuid="e0b57d1f-ed2d-43c5-b5a2-85bfcdbcd07f"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Hora de Salida:   " +$P{HORASALIDA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="273" width="555" height="52" forecolor="#545584" uuid="1332b9f9-39ae-4ca9-ad75-d5c51af8c4a8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Y para los usos que estime conveniente extiendo la presente,"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="325" width="555" height="155" forecolor="#545584" uuid="b336ac61-8f54-4d05-80f7-1613e3a93c87"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Atentamente"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="480" width="555" height="60" forecolor="#545584" uuid="12a94268-df6f-4389-8685-2d229f4cf2ce"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Yoselin Hernández"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="540" width="555" height="72" forecolor="#545584" uuid="b388e825-54ba-4d03-bcf1-31fc5e10c42c"/>
+				<textElement verticalAlignment="Top">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Asistente medico"]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="555" height="26" forecolor="#545584" uuid="c3ec46cc-ce62-4b9e-a4f6-8c372ef0fbb0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="39">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="19" forecolor="#545584" uuid="5b021393-96d3-4ad4-8946-76e63395783b"/>
+				<textElement textAlignment="Center" markup="html">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>Colonia Médica:</b>, Pasaje Dr. Mariano Samayoa #119, sanchez_vides@hotmail.com, Tel 2225-3439, Telefax:2235-3066,"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="19" width="555" height="20" forecolor="#545584" uuid="13784b0d-1327-4aa0-b736-64b7daa16393"/>
+				<textElement textAlignment="Center" markup="html">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cel. 7768-8300. San Salvador, El Salvador"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
