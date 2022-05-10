@@ -11,9 +11,9 @@ create table `artista` (
 
 create table `album` (
 	`ID_ALBUM` int (11),
-	`NOMBRE` varchar(90),
-	`VENTAS_ALBUM`varchar(90),
-	`FEC_PUBLICACION` varchar(90),	
+	`NOMBRE` varchar (90),
+	`VENTAS_ALBUM`int (90),
+	`FEC_PUBLICACION` varchar (90),	
 	`ID_ARTISTA` int (11)
 ); 
 
@@ -26,8 +26,8 @@ insert into `artista` (`ID_ARTISTA`, `NOMBRE`, `GENERO`, `VENTAS`, `DISCOGRAFIA`
 
 
 
-insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('1','un verano sin ti','230,000','2022','1');
-insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('2','nostalgia','44,000','2020','2');
-insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('3','chromatica','274,000','2020','3');
-insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('4','happier than ever','238,000','2021','4');
-insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('5','adele 30','500,000','2021','5');
+insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('1','un verano sin ti',230000,'2022','1');
+insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('2','nostalgia',44000,'2020','2');
+insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('3','chromatica',27,000,'2020','3');
+insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('4','happier than ever',238000,'2021','4');
+insert into `album` (`ID_ALBUM`, `NOMBRE`, `VENTAS_ALBUM`, `FEC_PUBLICACION`,`ID_ARTISTA`) values('5','adele 30',500000,'2021','5');
