@@ -1,10 +1,8 @@
 package com.uca.spring.controller;
 
 import com.uca.spring.model.Artista;
-import com.uca.spring.model.Municipio;
 import com.uca.spring.repository.ArtistaRepository;
 import com.uca.spring.util.ArtistaFilter;
-import com.uca.spring.util.CboFilter;
 
 import java.util.ArrayList;
 import java.util.List;

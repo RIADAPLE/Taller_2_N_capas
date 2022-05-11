@@ -38,7 +38,7 @@ public class Album implements Serializable {
   @JoinColumns({@JoinColumn(name = "ID_ARTISTA", referencedColumnName = "ID_ARTISTA")})
   Artista artista;
 
-  public int getIdAlbum() {
+  public Integer getIdAlbum() {
     return this.idAlbum;
   }
 
@@ -50,14 +50,34 @@ public class Album implements Serializable {
     return this.cancionPopular;
   }
 
-  public String getVenta() {
+  public String getFecPublicacion() {
     return this.fecPublicacion;
+  }
+  
+  public Integer getIdArtista() {
+	return this.artista.idArtista;
   }
 
   public void setIdAlbum(int newIdAlbum) {
-    idAlbum = newIdAlbum;
+    this.idAlbum = newIdAlbum;
   }
 
+  public void setNombre(String newNombre) {
+    this.nombre = newNombre;
+  }
+
+  public void setCancionPopular(String newCancionPopular) {
+    this.cancionPopular = newCancionPopular;
+  }
+
+  public void setFecPublicacion(String newfecPublicacion){
+    this.fecPublicacion = newfecPublicacion;
+  }
+
+  public void setIdArtista(int newIdArtista) {
+    this.artista.idArtista = newIdArtista;
+  }
+  
   public    Integer getCatArtistaDelegate(){
       return (this.artista== null) ? null : this.artista.getIdArtista();
   }

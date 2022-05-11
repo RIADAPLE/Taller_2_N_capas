@@ -101,7 +101,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <label>Artista</label>
                   <select
                     id="catArtistaDelegate"
-                    name="artista.idArtista"
+                    name="idArtista"
                     required="true"
                     class="form-control"
                     style="width: 100%"
