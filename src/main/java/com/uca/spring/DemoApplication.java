@@ -15,25 +15,26 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 @SpringBootApplication
 @ComponentScan
 public class DemoApplication extends SpringBootServletInitializer {
-  
+
   @Override
   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-     return application.sources(DemoApplication.class);
+    return application.sources(DemoApplication.class);
   }
-  
+
   public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
   }
-  
+
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-     registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
+    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/")
+        .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
   }
 
   @Bean
   public ServletRegistrationBean h2servletRegistration() {
-      ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
-      registration.addUrlMappings("/h2-console/*");
-      return registration;
+    ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
+    registration.addUrlMappings("/h2-console/*");
+    return registration;
   }
-  
+
 }
