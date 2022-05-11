@@ -1,7 +1,13 @@
 package com.uca.spring.controller;
 
 import com.uca.spring.model.Artista;
+import com.uca.spring.model.Municipio;
 import com.uca.spring.repository.ArtistaRepository;
+import com.uca.spring.util.ArtistaFilter;
+import com.uca.spring.util.CboFilter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,5 +43,16 @@ public class ArtistsController {
   public @ResponseBody String saveAgdReferido(@ModelAttribute("Artist") @Validated Artista artist) {
     artistaRepository.save(artist);
     return null;
+  }
+  
+  @RequestMapping(value = {"/artistaFilter"}, method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+  public @ResponseBody
+  List<ArtistaFilter> artistaFilter() {
+    List<Artista> artistas = artistaRepository.findAll();
+      List<ArtistaFilter> response = new ArrayList<>();
+      for (int i = 0; i < artistas.size(); i++) {
+          response.add(new ArtistaFilter(Integer.toString(artistas.get(i).getIdArtista()), artistas.get(i).getNombre()));
+      }
+      return response;
   }
 }

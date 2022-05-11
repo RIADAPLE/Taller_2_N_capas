@@ -41,12 +41,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="preloader">
       <div class="loader">
         <div class="loader__figure"></div>
-        <p class="loader__label">ARTISTAS</p>
+        <p class="loader__label">ALBUM</p>
       </div>
     </div>
     <div class="artist-page">
-      <a href="${pageContext.request.contextPath}/add-artist" title="Artist">
-        <button> Agregar artista </button>
+      <a href="${pageContext.request.contextPath}/add-album" title="Albums">
+        <button> Agregar album </button>
       </a>
     </div>
   </body>

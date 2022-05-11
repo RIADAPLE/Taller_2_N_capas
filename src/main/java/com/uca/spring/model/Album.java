@@ -3,8 +3,16 @@ package com.uca.spring.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +24,7 @@ import lombok.Setter;
 public class Album implements Serializable {
   private static final long serialVersionUID = 1L;
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ID_ALBUM")
   Integer idAlbum;
   @Column(name = "NOMBRE")
@@ -23,9 +32,11 @@ public class Album implements Serializable {
   @Column(name = "CANCION_POPULAR")
   String cancionPopular;
   @Column(name = "FEC_PUBLICACION")
-  String fecPublicacion;
-  @Column(name = "ID_ARTISTA")
-  Integer idArtista;
+  String fecPublicacion;  
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonIgnore
+  @JoinColumns({@JoinColumn(name = "ID_ARTISTA", referencedColumnName = "ID_ARTISTA")})
+  Artista artista;
 
   public int getIdAlbum() {
     return this.idAlbum;
@@ -43,16 +54,25 @@ public class Album implements Serializable {
     return this.fecPublicacion;
   }
 
-  public int getIdArtista() {
-    return this.idArtista;
-  }
-
   public void setIdAlbum(int newIdAlbum) {
     idAlbum = newIdAlbum;
   }
 
-  public void setIdArtista(int newIdArtista) {
-    idArtista = newIdArtista;
+  public    Integer getCatArtistaDelegate(){
+      return (this.artista== null) ? null : this.artista.getIdArtista();
+  }
+  
+  public    String getCatArtistaNombreDelegate(){
+      return (this.artista== null) ? null : this.artista.getNombre();
+  }
+  
+  public void setArtistaDelegate(    Integer  idArtista){
+      if (idArtista == null) {
+           this.artista = null;
+      }else {
+           this.artista = new Artista();
+           this.artista.setIdArtista(idArtista);
+       }
   }
 
 }

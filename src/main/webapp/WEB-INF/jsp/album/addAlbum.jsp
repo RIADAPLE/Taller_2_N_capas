@@ -87,13 +87,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <div class="row">
               <div class="col-md-12">
                 <label class="control-label">Canci&oacute;n m&aacute;s popular</label>
-                <input class="form-control" type="text" name="cancion" id="cancion" />
+                <input class="form-control" type="text" name="cancionPopular" id="cancionPopular" />
               </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                   <label class="control-label">A&ntilde;o de publicaci&oacute;n</label>
-                  <input class="form-control" type="date" name="anio" id="anio" />
+                  <input class="form-control" type="date" name="fecPublicacion" id="fecPublicacion" />
                 </div>
             </div>
               <div class="row">
@@ -109,10 +109,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <script>
                     $(document).ready(function () {
                       $('#catArtistaDelegate').select2({ allowClear: false });
-                      $.getJSON('/springform/cbofilterArtista', function (result) {
+                      $.getJSON('/springform/artistaFilter', function (result) {
                         $.each(result, function () {
                           $('#catArtistaDelegate').append(
-                            new Option(this.description, this.value),
+                            new Option(this.name, this.value),
                           );
                         });
                         $('#catArtistaDelegate').val('null').trigger('change');

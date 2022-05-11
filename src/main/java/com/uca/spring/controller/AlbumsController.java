@@ -19,6 +19,14 @@ public class AlbumsController {
   @Autowired
   AlbumRepository albumRepository;
 
+  @RequestMapping("/albums")
+  public ModelAndView viewArtists() {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("album/index.jsp");
+    return mv;
+  }
+
+  
   @RequestMapping("/add-album")
   public ModelAndView album() {
     ModelAndView mv = new ModelAndView();
