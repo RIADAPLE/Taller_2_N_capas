@@ -8,31 +8,34 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <script>
       (function (window, document, $, undefined) {
         $(function () {
-          var formAlbum = $('#formAlbum');
+          var formDeleteAlbum = $('#formDeleteAlbum');
 
-          formAlbum.submit(function (event) {
+          formDeleteAlbum.submit(function (event) {
+            const albumId = formDeleteAlbum.serialize().toString().substring(6);
+            const newUrl = '/deleteAlbum/' + albumId;
+
             swal(
               {
                 title: '¿Esta seguro?',
-                text: '¡Se ingresara un nuevo registro!',
+                text: '¡Se borrara un registro!',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#5D9CEC',
-                confirmButtonText: 'Sí, guardar registro!',
+                confirmButtonText: 'Sí, borrar registro!',
                 cancelButtonText: 'No, cancelar!',
                 closeOnConfirm: false,
                 closeOnCancel: false,
               },
-              function (isConfirm) {                
+              function (isConfirm) {
                 if (isConfirm) {
                   $.ajax({
-                    data: formAlbum.serialize(),
-                    url: '${pageContext.request.contextPath}/saveAlbum',
-                    type: 'POST',
+                    data: albumId,
+                    url: '${pageContext.request.contextPath}'+newUrl,
+                    type: 'DELETE',
                     success: function (response) {
-                      swal('Guardado!', 'Su registro se guardo exitosamente.', 'success');
+                      swal('Eliminado!', 'El registro se elimino exitosamente.', 'success');
                       $("button[data-dismiss='modal']").click();
-                      formAlbum.trigger('reloadGrid');
+                      formDeleteAlbum.trigger('reloadGrid');
                       return false;
                     },
                     error: function (x, e) {
@@ -67,59 +70,39 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="preloader">
       <div class="loader">
         <div class="loader__figure"></div>
-        <p class="loader__label">Album</p>
+        <p class="loader__label">Eliminar Album</p>
       </div>
     </div>
     <div id="main-wrapper">
       <div class="container album-page">
         <div class="row align-items-center">
-          <form role="form" id="formAlbum" data-toggle="validator">
+          <form role="form" id="formDeleteAlbum" data-toggle="validator">
             <div class="row album-title">
-              <h2>Formulario de album</h2>
+              <h2>Formulario eliminar album</h2>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label class="control-label">Nombre</label>
-                <input class="form-control" required="true" type="text" name="nombre" id="nombre" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label class="control-label">Canci&oacute;n m&aacute;s popular</label>
-                <input class="form-control" type="text" name="cancionPopular" id="cancionPopular" />
-              </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                  <label class="control-label">A&ntilde;o de publicaci&oacute;n</label>
-                  <input class="form-control" type="date" name="fecPublicacion" id="fecPublicacion" />
-                </div>
-            </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <label>Artista</label>
-                  <select
-                    id="catArtistaDelegate"
-                    name="artista"
-                    required="true"
-                    class="form-control"
-                    style="width: 100%"
-                  ></select>
-                  <script>
-                    $(document).ready(function () {
-                      $('#catArtistaDelegate').select2({ allowClear: false });
-                      $.getJSON('/springform/artistaFilter', function (result) {
-                        $.each(result, function () {
-                          $('#catArtistaDelegate').append(
-                            new Option(this.name, this.value),
-                          );
-                        });
-                        $('#catArtistaDelegate').val('null').trigger('change');
+                <label>Album</label>
+                <select
+                  id="catAlbumDelegate"
+                  name="album"
+                  required="true"
+                  class="form-control"
+                  style="width: 100%"
+                ></select>
+                <script>
+                  $(document).ready(function () {
+                    $('#catAlbumDelegate').select2({ allowClear: false });
+                    $.getJSON('/springform/albumFilter', function (result) {
+                      $.each(result, function () {
+                        $('#catAlbumDelegate').append(new Option(this.name, this.value));
                       });
+                      $('#catAlbumDelegate').val('null').trigger('change');
                     });
-                  </script>                  
-                </div>
+                  });
+                </script>
               </div>
+            </div>
             <div class="modal-footer">
               <a href="${pageContext.request.contextPath}/albums" title="Albums"
                 ><button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal"
@@ -127,10 +110,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 ></a
               >
               <button
-                id="btn-save"
+                id="btn-delete"
                 type="submit"
                 class="btn btn-success waves-effect waves-light save-category"
-                >Guardar</button
+                >Eliminar</button
               >
             </div>
           </form>

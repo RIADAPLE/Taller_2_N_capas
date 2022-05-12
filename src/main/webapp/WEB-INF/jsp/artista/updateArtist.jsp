@@ -8,9 +8,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <script>
       (function (window, document, $, undefined) {
         $(function () {
-          var formArtist = $('#formArtist');
+          var formUpdateArtist = $('#formUpdateArtist');
 
-          formArtist.submit(function (event) {
+          formUpdateArtist.submit(function (event) {
             swal(
               {
                 title: '¿Esta seguro?',
@@ -23,16 +23,17 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 closeOnConfirm: false,
                 closeOnCancel: false,
               },
-              function (isConfirm) {                
+              function (isConfirm) {
+                console.log(formUpdateArtist.serialize());
                 if (isConfirm) {
                   $.ajax({
-                    data: formArtist.serialize(),
-                    url: '${pageContext.request.contextPath}/saveArtist',
-                    type: 'POST',
+                    data: formUpdateArtist.serialize(),
+                    url: '${pageContext.request.contextPath}/saveAlbum', /*Se debe cambiar en el Controller respectivo*/
+                    type: 'PUT',
                     success: function (response) {
                       swal('Guardado!', 'Su registro se guardo exitosamente.', 'success');
                       $("button[data-dismiss='modal']").click();
-                      formArtist.trigger('reloadGrid');
+                      formUpdateArtist.trigger('reloadGrid');
                       return false;
                     },
                     error: function (x, e) {
@@ -51,14 +52,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       })(window, document, window.jQuery);
     </script>
     <style>
-      .artist-page {
+      .album-page {
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 24px;
       }
-      .artist-title {
+      .album-title {
         padding: 10px;
       }
     </style>
@@ -67,31 +68,56 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="preloader">
       <div class="loader">
         <div class="loader__figure"></div>
-        <p class="loader__label">ADD ARTIST</p>
+        <p class="loader__label">Actualizar Album</p>
       </div>
     </div>
     <div id="main-wrapper">
-      <div class="container artist-page">
+      <div class="container album-page">
         <div class="row align-items-center">
-          <form role="form" id="formArtist" data-toggle="validator">
-            <div class="row artist-title">
-              <h2>Formulario de artista</h2>
+          <form role="form" id="formUpdateArtist" data-toggle="validator">
+            <div class="row album-title">
+              <h2>Formulario de actualizar artista</h2>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label class="control-label">Nombre</label>
-                <input class="form-control" required="true" type="text" name="nombre" id="nombre" />
+                <label> Nuevo Artista</label>
+                <select
+                  id="catArtistaDelegate"
+                  name="artista"
+                  required="true"
+                  class="form-control"
+                  style="width: 100%"
+                ></select>
+                <script>
+                  $(document).ready(function () {
+                    $('#catArtistaDelegate').select2({ allowClear: false });
+                    $.getJSON('/springform/artistaFilter', function (result) {
+                      $.each(result, function () {
+                        $('#catArtistaDelegate').append(
+                          new Option(this.name, this.value),
+                        );
+                      });
+                      $('#catArtistaDelegate').val('null').trigger('change');
+                    });
+                  });
+                </script>                  
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label class="control-label">G&eacute;nero</label>
-                <input class="form-control" type="text" name="genero" id="genero" />
+                <label class="control-label">Nuevo nombre</label>
+                <input class="form-control" required="true" type="text" name="nuevoNombre" id="nuevoNombre" />
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label class="control-label" for="pais"> Pa&iacute;s </label>
+                <label class="control-label">Nuevo g&eacute;nero</label>
+                <input class="form-control" type="text" name="nuevaCancionPopular" id="nuevaCancionPopular" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label class="control-label" for="pais"> Nuevo Pa&iacute;s </label>
                 <select id="pais" name="pais" required class="form-control">
                   <option value="Afganistan">Afghanistan</option>
                   <option value="Albania">Albania</option>
@@ -342,25 +368,25 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <option value="Zambia">Zambia</option>
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-              </div>
+              </div>              
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label class="control-label">Discograf&iacute;a</label>
+                <label class="control-label"> Nueva Discograf&iacute;a</label>
                 <input class="form-control" type="text" name="discografia" id="discografia" />
               </div>
             </div>
             <div class="modal-footer">
-              <a href="${pageContext.request.contextPath}/artists" title="Artists"
+              <a href="${pageContext.request.contextPath}/artists" title="Return"
                 ><button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal"
                   >Cancelar</button
                 ></a
               >
               <button
-                id="btn-save"
+                id="btn-update"
                 type="submit"
                 class="btn btn-success waves-effect waves-light save-category"
-                >Guardar</button
+                >Actualizar</button
               >
             </div>
           </form>

@@ -29,9 +29,9 @@ public class Artista implements Serializable {
   String pais;
   @Column(name = "DISCOGRAFIA")
   String discografia;
-  
+
   public Integer getIdArtista() {
-	  return this.idArtista;
+    return this.idArtista;
   }
 
   public String getNombre() {
@@ -49,9 +49,9 @@ public class Artista implements Serializable {
   public String getDiscografia() {
     return this.discografia;
   }
-  
-  public void setIdArtista(int  newIdArtista) {
-	this.idArtista = newIdArtista;
+
+  public void setIdArtista(int newIdArtista) {
+    this.idArtista = newIdArtista;
   }
 
   public void setNombre(String nombre) {

@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,10 +33,10 @@ public class Album implements Serializable {
   @Column(name = "CANCION_POPULAR")
   String cancionPopular;
   @Column(name = "FEC_PUBLICACION")
-  String fecPublicacion;  
+  String fecPublicacion;
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonIgnore
-  @JoinColumns({@JoinColumn(name = "ID_ARTISTA", referencedColumnName = "ID_ARTISTA")})
+  @JoinColumns({ @JoinColumn(name = "ID_ARTISTA", referencedColumnName = "ID_ARTISTA") })
   Artista artista;
 
   public Integer getIdAlbum() {
@@ -53,9 +54,9 @@ public class Album implements Serializable {
   public String getFecPublicacion() {
     return this.fecPublicacion;
   }
-  
+
   public Integer getIdArtista() {
-	return this.artista.idArtista;
+    return this.artista.idArtista;
   }
 
   public void setIdAlbum(int newIdAlbum) {
@@ -70,29 +71,34 @@ public class Album implements Serializable {
     this.cancionPopular = newCancionPopular;
   }
 
-  public void setFecPublicacion(String newfecPublicacion){
+  public void setFecPublicacion(String newfecPublicacion) {
     this.fecPublicacion = newfecPublicacion;
   }
 
-  public void setIdArtista(int newIdArtista) {
-    this.artista.idArtista = newIdArtista;
+  public void setArtista(Integer newIdArtista) {
+    if (newIdArtista == null) {
+      this.artista = null;
+    } else {
+      this.artista = new Artista();
+      this.artista.setIdArtista(newIdArtista);
+    }
   }
-  
-  public    Integer getCatArtistaDelegate(){
-      return (this.artista== null) ? null : this.artista.getIdArtista();
+
+  public Integer getCatArtistaDelegate() {
+    return (this.artista == null) ? null : this.artista.getIdArtista();
   }
-  
-  public    String getCatArtistaNombreDelegate(){
-      return (this.artista== null) ? null : this.artista.getNombre();
+
+  public String getCatArtistaNombreDelegate() {
+    return (this.artista == null) ? null : this.artista.getNombre();
   }
-  
-  public void setArtistaDelegate(    Integer  idArtista){
-      if (idArtista == null) {
-           this.artista = null;
-      }else {
-           this.artista = new Artista();
-           this.artista.setIdArtista(idArtista);
-       }
+
+  public void setArtistaDelegate(Integer idArtista) {
+    if (idArtista == null) {
+      this.artista = null;
+    } else {
+      this.artista = new Artista();
+      this.artista.setIdArtista(idArtista);
+    }
   }
 
 }
