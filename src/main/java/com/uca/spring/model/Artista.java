@@ -30,6 +30,10 @@ public class Artista implements Serializable {
   @Column(name = "DISCOGRAFIA")
   String discografia;
 
+  public Artista() {
+    this.nombre = "No encontrado";
+  }
+
   public Integer getIdArtista() {
     return this.idArtista;
   }

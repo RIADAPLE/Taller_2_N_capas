@@ -89,7 +89,7 @@ public class AlbumsController {
     List<AlbumFull> response = new ArrayList<>();
     for (int i = 0; i < albums.size(); i++) {
       Integer newId = albums.get(i).getCatArtistaDelegate();
-      Artista newArtist = artistaRepository.findById(newId).orElse(null);
+      Artista newArtist = artistaRepository.findById(newId).orElse(new Artista());
       String newArtistName = newArtist.getNombre();
       response.add(new AlbumFull(Integer.toString(albums.get(i).getIdAlbum()), albums.get(i).getNombre(),
           albums.get(i).getCancionPopular(), albums.get(i).getFecPublicacion(), newArtistName));
